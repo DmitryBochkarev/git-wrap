@@ -1,9 +1,8 @@
 {exec} = require 'child_process'
 
 module.exports.run = (cmd, options, done) ->
+  [done, options] = [options, {}] if typeof options is 'function'
   output = ''
-
-  [done, options] = [options, {}] if typeof done is 'function'
   child = exec cmd, options
   child.stdout.on 'data', (data) ->
     output += data

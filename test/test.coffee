@@ -1,1 +1,4 @@
-git = require '../'
+Git = require '../'
+git = new Git '../'
+
+git.head console.log
