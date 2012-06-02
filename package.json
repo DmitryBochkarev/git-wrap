@@ -1,8 +1,8 @@
 {
   "name": "git-wrap",
-  "description": "",
-  "author": "",
-  "version": "0.0.1",
+  "description": "wrap around git command line tools",
+  "author": "Dmitry Bochkarev",
+  "version": "0.0.2",
   "repository": {
     "git": "https://github.com/DmitryBochkarev/git-wrap"
   },

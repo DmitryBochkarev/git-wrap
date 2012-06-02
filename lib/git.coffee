@@ -23,12 +23,11 @@ module.exports = class Git
     dir = path.resolve(@path, '.git/refs/heads')
     fs.readdir dir, (err, files) ->
       throw err if err
-      heads = {}
+      heads = []
       iterator = (file, done) ->
         fs.readFile path.resolve(dir, file), 'utf8', (err, content) ->
           throw err if err
-          heads[file] =
-            sha: "#{content}".trim()
+          heads.push sha: "#{content}".trim(), name: file
           done undefined
       async.forEachSeries files, iterator, (err) ->
         throw err if err
