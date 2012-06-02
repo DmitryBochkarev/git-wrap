@@ -67,10 +67,10 @@ module.exports = class Git
   sha: (rev, done) ->
     cmd = "git rev-parse #{rev}"
     @run cmd, (err, sha) ->
-      done undefined, sha
+      done undefined, "#{sha}".trim()
 
   objectByPath: (rev, path, done) ->
     @sha "#{rev}:#{path}", (err, sha) =>
-      @object "#{sha}".trim(), done
+      @object sha, done
 
 
