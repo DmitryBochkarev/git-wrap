@@ -64,9 +64,13 @@ module.exports = class Git
     @run cmd, (err, dump) ->
       done undefined, {objects: parseTreeDump(dump)}
 
+  sha: (rev, done) ->
+    cmd = "git rev-parse #{rev}"
+    @run cmd, (err, sha) ->
+      done undefined, sha
+
   objectByPath: (rev, path, done) ->
-    cmd = "git rev-parse #{rev}:#{path}"
-    @run cmd, (err, sha) =>
+    @sha "#{rev}:#{path}", (err, sha) =>
       @object "#{sha}".trim(), done
 
 
